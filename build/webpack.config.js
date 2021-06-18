@@ -26,8 +26,8 @@ module.exports = {
   },
   output: {
     path: resolvePath('www'),
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[name].js',
+    filename: 'js/[name].js?id=[hash]',
+    chunkFilename: 'js/[name].js?id=[hash]',
     publicPath: '',
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json',
