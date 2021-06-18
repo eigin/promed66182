@@ -1,0 +1,93 @@
+<template>
+<div class="page" data-name="home">
+  <div class="navbar theme-dark">
+    <div class="navbar-bg"></div>
+    <div class="navbar-inner">
+      <div class="left">
+        <a href="#" class="link icon-only panel-open" data-panel="left">
+          <i class="icon f7-icons if-not-md">menu</i>
+          <i class="icon material-icons if-md">menu</i>
+        </a>
+      </div>
+      <div class="title sliding">Статистика</div>
+      <div class="right">
+        <a href="#" class="link icon-only panel-open" data-panel="right">
+          <i class="icon f7-icons if-not-md">menu</i>
+          <i class="icon material-icons if-md">menu</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="page-content page_dark">
+
+      <div class="row no-gap padding">
+        <div class="col-100 medium-50">
+          <div class="card card-outline">
+            <div class="card-header bold">Всего</div>
+            <div class="card-content card-content-padding">Общее количество сообщений <b>${stat.totalCount}</b> / С ошибкой <b>${stat.errorCount}</b> Средняя скорость <b>${stat.averageSpeed}</b></div>
+          </div>
+          <div class="card card-outline">
+            <div class="card-header bold">За последний час</div>
+            <div class="card-content card-content-padding">Общее количество сообщений <b>${stat.lastHourTotalCount}</b> / С ошибкой <b>${stat.lastHourErrorCount}</b> Средняя скорость <b>${stat.lastHourSpeed}</b></div>
+          </div>
+          <div class="card card-outline">
+            <div class="card-header bold">За последнюю минуту</div>
+            <div class="card-content card-content-padding">Общее количество сообщений <b>${stat.lastMinuteTotalCount}</b> / С ошибкой <b>${stat.lastMinuteErrorCount}</b> Средняя скорость <b>${stat.lastMinuteSpeed}</b></div>
+          </div>
+          <div class="card card-outline">
+            <div class="card-header bold">Брокер</div>
+            <div class="card-content card-content-padding"><table>
+              <tr><td>Добавлено</td><td><b>${stat.enqueueCount}</b></td><td>сообщений</td></tr>
+              <tr><td>Обработано</td><td><b>${stat.dequeueCount}</b></td><td>сообщений</td></tr>
+              <tr><td>В процессе</td><td><b>${stat.pendingCount}</b></td><td>сообщений</td></tr>
+              <tr><td>Забыто</td><td><b>${stat.forgottenCount}</b></td><td>сообщений</td></tr>
+            </table></div>
+          </div>
+
+        </div>
+        <div class="col-100 medium-50">
+
+          <div class="card card-outline">
+            <div class="card-header bold">Актуальность</div>
+            <div class="card-content card-content-padding">Данные будут полностью актуальны в <b>${stat.estimatedEndDate}</b></div>
+          </div>
+          <div class="card card-outline">
+            <div class="card-header bold">Таблицы</div>
+            <div class="card-content card-content-padding">Всего <b>${stat.tableCount}</b> таблиц в <b>${stat.channelCount}</b> кан., <b>${stat.consumerCount}</b> активных подписчиков</div>
+          </div>
+          <div class="card card-outline">
+            <div class="card-header bold">Память и хранилище</div>
+            <div class="card-content card-content-padding">
+              <table>
+                <tr><td>% использования хранилища</td><td><b>${stat.brokerStorePercentUsage}</b></td></tr>
+                <tr><td>% использования временного хранилища</td><td><b>${stat.brokerTempPercentUsage}</b></td></tr>
+                <tr><td>% использования памяти</td><td><b>${stat.brokerMemoryPercentUsage}</b></td></tr>
+              </table>
+          </div>
+        </div>
+        <div class="card card-outline">
+          <div class="card-header bold">Сервис работает</div>
+          <div class="card-content card-content-padding">Аптайм <b>${stat.uptime}</b></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</template>
+<script>
+import store from '../js/store.js';
+export default (props, {$f7, $on, $update}) => {
+
+  // Component Data
+  const stat = store.state.stat[0];
+  // let request_interval = 1000;
+
+  $on('pageInit', (e, page) => {
+    // $update();
+  });
+
+  return $render;
+};
+</script>

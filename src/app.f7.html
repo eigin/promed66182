@@ -1,0 +1,170 @@
+
+<template>
+  <div id="app">
+
+
+    <!-- Left panel with cover effect -->
+    <div class="panel panel-left panel-cover theme-dark panel-init" data-visible-breakpoint="960">
+      <div class="view view-init" data-name="left">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+              <div class="title">Сервис репликации</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <!-- <div class="block-title">Управление</div> -->
+            <div class="list links-list">
+              <ul>
+                <li>
+                  <a href="/" data-view=".view-main" class="panel-close">Статистика</a>
+                </li>
+                <li>
+                  <a href="/table/" data-view=".view-main" class="panel-close">Таблицы</a>
+                </li>
+                <li>
+                  <a href="/source/" data-view=".view-main" class="panel-close">Источники</a>
+                </li>
+                <li>
+                  <a href="/channel/" data-view=".view-main" class="panel-close">Каналы</a>
+                </li>
+                <li>
+                  <a href="/script/" data-view=".view-main" class="panel-close">Скрипты</a>
+                </li>
+                <li>
+                  <a href="/error/" data-view=".view-main" class="panel-close">Ошибки</a>
+                </li>
+                <li>
+                  <a href="/compare/" data-view=".view-main" class="panel-close">Сравнение данных</a>
+                </li>
+                <li>
+                  <a href="/config/" data-view=".view-main" class="panel-close">Ред. конфингурации</a>
+                </li>
+              </ul>
+            </div>
+            <div class="block-title">
+              <a href="#" class="link panel-open padding-top" data-panel="right">About</a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">About</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Proj: Dbreplicator</p>
+              <p>Task: <a href="https://jira.is-mis.ru/browse/PROMEDWEB-66182" class="external" target="blank">PROMED-66182</a></p>
+              <p>Dev: Eigin</p>
+              <p>Use: <a href="https://framework7.io" class="external" target="blank">Framework7.io</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main view-init safe-areas" data-url="/"></div>
+
+
+    <!-- Popup -->
+    <div class="popup" id="my-popup">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Popup</div>
+              <div class="right">
+                <a href="#" class="link popup-close">Close</a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">
+              <p>Popup content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Login</div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Username</div>
+                    <div class="item-input-wrap">
+                      <input type="text" name="username" placeholder="Your username" value="${username}" @input="${updateUsername}"/>
+
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Password</div>
+                    <div class="item-input-wrap">
+                      <input type="password" name="password" placeholder="Your password" value="${password}" @input="${updatePassword}"/>
+
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a href="#" class="item-link list-button login-button" @click="${alertLoginData}">Sign In</a>
+
+                </li>
+              </ul>
+              <div class="block-footer">Some text about login information.<br/>Click "Sign In" to close Login Screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+<script>
+  export default (props, { $f7, $update }) => {
+    // Login screen demo data
+    let username = '';
+    let password = '';
+
+    const updateUsername = (e) => {
+      username = e.target.value;
+      $update();
+    }
+    const updatePassword = (e) => {
+      password = e.target.value;
+      $update();
+    }
+    const alertLoginData = () => {
+      $f7.dialog.alert('Username: ' + username + '<br/>Password: ' + password, () => {
+        $f7.loginScreen.close();
+      });
+    }
+
+    return $render;
+  }
+</script>

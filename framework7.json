@@ -1,0 +1,26 @@
+{
+  "cwd": "C:\\F7_PROJ\\promed66182",
+  "type": [
+    "web"
+  ],
+  "name": "Promed66182",
+  "framework": "core",
+  "template": "split-view",
+  "bundler": "webpack",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false,
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  }
+}
